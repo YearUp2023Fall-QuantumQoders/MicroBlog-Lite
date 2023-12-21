@@ -1,2 +1,2 @@
-# MicroBlog-Lite
-YU Capstone 3
+# NomNomNosh
+YU Capstone 3 - Micro-Blog Lite
