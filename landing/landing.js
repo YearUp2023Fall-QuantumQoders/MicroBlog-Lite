@@ -9,8 +9,14 @@ const loginForm = document.querySelector("#login");
 window.onload() = init;
 
 function init(){
+    if(isLoggedIn){
+        window.location.href = '/posts';
+    }
+    else{
+    //code to setup the nav bar to log out
     const navLogout = document.getElementById("navLogout");
     navLogout.onclick = logout;
+    }
 }
 
 loginForm.onsubmit = function (event) {
