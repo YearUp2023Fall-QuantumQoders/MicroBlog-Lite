@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,39 +32,48 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="#" alt="#" width="30" height="24" class="d-inline-block align-text-top">
-            Nom Nom Nosh
-          </a>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--This unordered list is a placeholder for debug navigation-->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Registration</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-            </ul>
-            <span class="nav-item">
-                <!--EXTRA Todo: This should change to be a link to the registration page if 
+            <a class="navbar-brand" href="#">
+                <img src="#" alt="#" width="30" height="24" class="d-inline-block align-text-top">
+                Nom Nom Nosh
+            </a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!--This unordered list is a placeholder for debug navigation-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                </ul>
+                <span class="nav-item">
+                    <!--EXTRA Todo: This should change to be a link to the registration page if 
                 not logged in, and if logged in, change to be User name with a clickable menu 
                 that allows the user to navigate to profile and logout-->
-                <a class="nav-link" id="navLogout" href="#">Logout</a>
-              </span>
-        </div>
-      </nav>
+                    <a class="nav-link" id="navLogout" href="#">Logout</a>
+                </span>
+            </div>
+    </nav>
 
 
     <header>
-        <h1>Welcome to <code>YOUR MICROBLOG NETWORK</code></h1>
+        <h1>Welcome to <code>Nom Nom Nosh</code>!</h1>
     </header>
 
     <main>
+        <h3>Share your thoughts and recipes for short meals and snacks here!</h3>
+        <p>Introducing Nom Nom Nosh, your ultimate hub for quick and delectable meal ideas! Catering to the fast-paced
+            rhythm of modern life, Nom Nom Nosh is a blogging haven where users can seamlessly share their thoughts and
+            swap recipes for short, satisfying meals and snacks. Whether you're a culinary enthusiast seeking to spice
+            up your snack game or someone in search of speedy, flavorful solutions for your daily dining, Nom Nom Nosh
+            is here to transform your kitchen into a hub of creativity and efficiency!</p>
 
+
+
+            <h2>Login to Enter!</h2>
         <form id="login">
             <div>
                 <label for="username">Username</label>
@@ -77,6 +87,8 @@
 
             <button id="loginButton" type="submit">Login</button>
         </form>
+        <!--Add registration page link here-->
+        <a href="#">Don't have an Account?</a>
 
     </main>
 
@@ -85,4 +97,5 @@
     <!-- Page-specific code -->
     <script src="./landing.js"></script>
 </body>
+
 </html>
