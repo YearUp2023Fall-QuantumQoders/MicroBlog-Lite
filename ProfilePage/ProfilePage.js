@@ -3,11 +3,11 @@
 const sendMessage = document.getElementById("send-message");
 const messageText = document.getElementById("message-text");
 const posts = document.getElementById("posts")
-const loginData = getLoginData();
+const loginData = window.localStorage.getItem("login-data");
 
 window.onload = () =>{
-    sendMessage.onclick = sendPost;
     displayPosts();
+    sendMessage.onclick = sendPost;
 }   
 
 // send a post fetch to create a post
@@ -17,7 +17,7 @@ const sendPost = () =>{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                
+                "Authorization": `Bearer ${loginData.token}`,    
             },
             body: JSON.stringify({
                 text: messageText.value
@@ -27,6 +27,7 @@ const sendPost = () =>{
         .then(res => res.json())
         .then(data =>{
             console.log(data);
+            window.location.reload();
         })
         .catch(err => console.log(err));
 }
@@ -37,7 +38,7 @@ const displayPosts = () =>{
     fetch("http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts", {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${loginData.token}`
+            "Authorization": `Bearer ${loginData.token}`,    
             }
         })
         .then(res => res.json())
@@ -69,4 +70,5 @@ const addPostsToDiv = (Posts) =>{
 // format the layout of a single post
 const formatSinglePost = (post) => {
     // use same layout as Posts Page 
+    console.log(post);
 };
