@@ -3,7 +3,7 @@
 const sendMessage = document.getElementById("send-message");
 const messageText = document.getElementById("message-text");
 const posts = document.getElementById("posts")
-const loginData = window.localStorage.getItem("login-data");
+const loginData = JSON.parse(window.localStorage.getItem("login-data"));
 
 window.onload = () =>{
     displayPosts();
@@ -43,7 +43,7 @@ const displayPosts = () =>{
         })
         .then(res => res.json())
         .then(data =>{
-            console.log(data);
+            // console.log(data);
             addPostsToDiv(data)
         });
     
@@ -57,9 +57,11 @@ const addPostsToDiv = (Posts) =>{
             formatSinglePost(singlePost);
         } else{
             // loop through likes of every post and find which one user liked
-            for(like of singlePost.likes){
-                if(like.username == loginData.username){
-                    formatSinglePost(singlePost);
+            if(singlePost.likes.length > 0){
+                for(let likedUser of singlePost.likes){
+                    if(likedUser.username == loginData.username){
+                        formatSinglePost(singlePost);
+                    }
                 }
             }
         }
