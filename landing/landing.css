@@ -9,3 +9,16 @@
     color: #eee;
     background-position: center;
   }
+
+  span {
+    display: block;
+    text-indent: 1em;
+  }
+  
+  #second {
+    padding-left: 1em;
+  }
+  
+  #third {
+    padding-left: 2em;
+  }
