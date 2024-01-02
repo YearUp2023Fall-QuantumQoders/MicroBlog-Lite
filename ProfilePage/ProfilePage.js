@@ -4,8 +4,10 @@ const sendMessage = document.getElementById("send-message");
 const messageText = document.getElementById("message-text");
 const posts = document.getElementById("posts")
 const loginData = JSON.parse(window.localStorage.getItem("login-data"));
+let logoutLink = document.getElementById("navLogout");
 
 window.onload = () =>{
+    logoutLink.onclick = logout;
     displayPosts();
     sendMessage.onclick = sendPost;
 }   

@@ -24,14 +24,14 @@
     <!-- Run BEFORE page is finished loading (before window.onload): -->
     <script src="../auth.js"></script>
     <script>
-        if (isLoggedIn() === false) window.location.replace("/landing");
+        if (isLoggedIn() === false) window.location.replace("/landing/");
     </script>
 </head>
 <body>
  <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/landing/index.html">
+                <a class="navbar-brand" href="/landing/">
                     <img src="#" alt="#" width="30" height="24" class="d-inline-block align-text-top">
                     Nom Nom Nosh
                 </a>
