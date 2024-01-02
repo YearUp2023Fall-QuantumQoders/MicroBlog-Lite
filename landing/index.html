@@ -19,6 +19,12 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" href="./landing.css">
 
+    <!--Font Link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300&display=swap"
+        rel="stylesheet">
+
     <title>Login to the Microblog Network!</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
@@ -57,36 +63,49 @@
     </nav>
 
 
-    <header>
-        <h1>Welcome to <code>Nom Nom Nosh</code>!</h1>
-    </header>
+  
 
     <main>
-        <h3>Share your thoughts and recipes for short meals and snacks here!</h3>
-        <p>Introducing Nom Nom Nosh, your ultimate hub for quick and delectable meal ideas! Catering to the fast-paced
-            rhythm of modern life, Nom Nom Nosh is a blogging haven where users can seamlessly share their thoughts and
-            swap recipes for short, satisfying meals and snacks. Whether you're a culinary enthusiast seeking to spice
-            up your snack game or someone in search of speedy, flavorful solutions for your daily dining, Nom Nom Nosh
-            is here to transform your kitchen into a hub of creativity and efficiency!</p>
+        <div class="background-image">
 
+            <h1><span id="first"> Nom</span> <span id="second">Nom</span> <span id="third">Nosh</span></h1>
 
+            <div class=" card col-lg-5 rounded-0" id="intro-card">
+                <div class="text">
 
-            <h2>Login to Enter!</h2>
-        <form id="login">
-            <div>
-                <label for="username">Username</label>
-                <input type="text" id="username" minlength="3">
+                    <h3>Share your thoughts and recipes for short meals and snacks here!</h3>
+                    <p class="card-text">Introducing Nom Nom Nosh, your ultimate hub for quick and delectable meal ideas! Catering to the
+                        fast-paced rhythm of modern life, Nom Nom Nosh is a blogging haven where users can seamlessly share their
+                        thoughts and swap recipes for short, satisfying meals and snacks. NomNom  Nosh
+                        is here to transform your kitchen into a hub of creativity and efficiency!</p>
+                </div>
             </div>
+
+
+            <div class="card col-lg-5 rounded-0" id="login-card">
+                <div class=" card-subtitle text-white">Login to Enter!</div>
+                <form id="login">
+                    <div>
+                        <label class=" form-label text-white" for="username">Username</label>
+                        <input  class="form-control" type="text" id="username" minlength="3">
+                    </div>
+
+                    <div>
+                        <label  class=" form-label text-white" for="password">Password</label>
+                        <input class="form-control" type="password" id="password" minlength="6">
+                    </div>
+                     
+                    <button class=" mt-1 btn btn-dark" id="loginButton" type="submit">Login</button>
+                
+                <a class="  text-white" href="/Registration/index.html">Don't have an Account?</a>
+            </form>
 
             <div>
                 <label for="password">Password</label>
                 <input type="password" id="password" minlength="3">
-            </div>
 
-            <button id="loginButton" type="button">Login</button>
-        </form>
-        <!--Add registration page link here-->
-        <a href="/Registration/index.html">Don't have an Account?</a>
+            </div>
+        </div>
 
     </main>
     <script src="landing.js"></script>
