@@ -1,1 +1,27 @@
 /* Posts Page CSS */
+#displayPostsContainer 
+{
+border: 10px black solid;
+}
+
+.card {
+    
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 5px 11px 4px rgba(0, 0, 0, 0.2);
+  }
+
+
+  body{
+    background-color: #3e4852;
+  }
+  h1{
+    font-family: 'Italiana', serif;
+    margin:30px;
+    font-size: 9.259vh;
+  }
+

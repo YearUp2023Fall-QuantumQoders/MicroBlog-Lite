@@ -1,6 +1,8 @@
 /* Posts Page JavaScript */
 "use strict";
 
+
+
 let loginData = getLoginData();
 let options = {
   method: "GET",
@@ -44,7 +46,7 @@ function createCard(userPost) {
 
   //create a new card every time there's a new post
   let card = document.createElement('div');
-  card.className = 'card';
+  card.className = 'card ';
 
   //card body
   let cardBody = document.createElement('div');
@@ -53,6 +55,8 @@ function createCard(userPost) {
   cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
     `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
     `<p class="card-text">${postText}</p>`;
+
+
 
   //Append card body to card
   card.appendChild(cardBody);
