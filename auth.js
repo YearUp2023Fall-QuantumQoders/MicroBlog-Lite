@@ -2,7 +2,7 @@
 
 "use strict";
 
-const apiBaseURL = "https://microbloglite.herokuapp.com";
+const apiBaseURL = "http://microbloglite.us-east-2.elasticbeanstalk.com/auth/login";
 // Backup server:   https://microbloglite.onrender.com
 
 // You can use this function to get the login data of the logged-in
@@ -78,6 +78,6 @@ function logout () {
             // error with the fetch request above.
 
             window.localStorage.removeItem("login-data");  // remove login data from LocalStorage
-            window.location.assign("/");  // redirect back to landing page
+            window.location.assign("/landing");  // redirect back to landing page
         });
 }

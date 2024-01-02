@@ -28,10 +28,7 @@
     <title>Login to the Microblog Network!</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
-    <script src="./auth.js"></script>
-    <script>
-        if (isLoggedIn() === true) window.location.replace("/posts");
-    </script>
+
 </head>
 
 
@@ -62,6 +59,7 @@
                     <a class="nav-link" id="navLogout" href="#">Logout</a>
                 </span>
             </div>
+        </div>
     </nav>
 
 
@@ -83,6 +81,7 @@
                 </div>
             </div>
 
+
             <div class="card col-lg-5 rounded-0" id="login-card">
                 <div class=" card-subtitle text-white">Login to Enter!</div>
                 <form id="login">
@@ -100,16 +99,19 @@
                 
                 <a class="  text-white" href="/Registration/index.html">Don't have an Account?</a>
             </form>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" minlength="3">
+
             </div>
         </div>
 
-
     </main>
-
-    <footer></footer>
-
-    <!-- Page-specific code -->
-    <script src="./landing.js"></script>
+    <script src="landing.js"></script>
+    <script>
+        if (isLoggedIn() === true) window.location.replace("/posts");
+    </script>
 </body>
 
 </html>
