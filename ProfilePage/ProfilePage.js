@@ -147,11 +147,11 @@ const formatSinglePost = (userPost) => {
 
     //create a new card every time there's a new post
     let card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card container m-3 ';
 
     //card body
     let cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
+    cardBody.className = 'card-body ';
     //add body content
     cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
         `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +

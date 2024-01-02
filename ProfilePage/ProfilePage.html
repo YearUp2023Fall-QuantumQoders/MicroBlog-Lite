@@ -11,6 +11,7 @@
         <script>
             if (isLoggedIn() === false) window.location.replace("/landing/");
         </script>
+    <link rel="stylesheet" href="ProfilePage.css">
 </head>
 
 <body>
@@ -43,29 +44,32 @@
                 </div>
         </nav>
     </header>
-    <main>
-        <h1 id="user-name" class="text-center mt-5"></h1>
-        <div class="text-center m-3">
-            <div id="display-bio" ></div>
+    <main class="page">
+        <div class="bg-white">
 
+            <h1 id="user-name" class="text-center mt-5"></h1>
+            <div class="text-center m-3">
+                <div id="display-bio" ></div>
+                
+            </div>
+            
+            <div class="row justify-content-center align-items-center ">
+                
+                <!-- Trigger Modal for Post  -->
+                <button type="button" class="btn btn-secondary  col-lg-2  col-md-2 col-sm-3 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                data-bs-whatever="@getbootstrap">Create Post</button>
+                
+                
+                <!-- Trigger Modal for Profile -->
+                <button type="button" class="btn btn-secondary col-lg-2 col-md-2 col-sm-3 m-2" data-bs-toggle="modal" data-bs-target="#updateBioModal"
+                data-bs-whatever="@getbootstrap">Update Profile</button>
+            </div>
+            
+            
+            <div class="mt-5" style="color: #333; background-color: #333; height: 2px; border: none;"></div>
         </div>
-        
-        <div class="row justify-content-center align-items-center ">
 
-        <!-- Trigger Modal for Post  -->
-        <button type="button" class="btn btn-primary  col-lg-2  col-md-2 col-sm-3 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            data-bs-whatever="@getbootstrap">Create Post</button>
-
-
-        <!-- Trigger Modal for Profile -->
-        <button type="button" class="btn btn-primary col-lg-2 col-md-2 col-sm-3 m-2" data-bs-toggle="modal" data-bs-target="#updateBioModal"
-            data-bs-whatever="@getbootstrap">Update Profile</button>
-        </div>
-
-
-        <div class="mt-5" style="color: #333; background-color: #333; height: 2px; border: none;"></div>
-
-        <div id="posts" class="mt-3"></div>
+        <div id="posts" class="mt-3 justify-content-center align-items-center"></div>
 
 
     </main>
