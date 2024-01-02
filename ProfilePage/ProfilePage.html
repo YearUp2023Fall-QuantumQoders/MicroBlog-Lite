@@ -17,30 +17,29 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/landing/index.html">
+                <a class="navbar-brand" href="#">
                     <img src="#" alt="#" width="30" height="24" class="d-inline-block align-text-top">
                     Nom Nom Nosh
                 </a>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!--This unordered list is a placeholder for debug navigation-->
                         <li class="nav-item">
-                            <a class="nav-link" href="/Registration/index.html">Registration</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/posts/index.html">Posts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="/posts/">Posts</a>
                         </li>
                     </ul>
-                    <span class="nav-item">
-                        <!--EXTRA Todo: This should change to be a link to the registration page if 
-                            not logged in, and if logged in, change to be User name with a clickable menu 
-                            that allows the user to navigate to profile and logout-->
-                        <a class="nav-link" id="navLogout" href="#">Logout</a>
+                    <li class="nav-item dropdown pe-5 me-5">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Account
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item disabled" href="#" id="loggedUser"></a></li>
+                          <li><a class="dropdown-item disabled" href="/ProfilePage/ProfilePage.html">My Profile</a></li>
+                          <li><a class="dropdown-item" href="#" id="navLogout">Logout</a></li>
+                        </ul>
+                      </li>
                     </span>
                 </div>
+            </div>
         </nav>
     </header>
     <main>
