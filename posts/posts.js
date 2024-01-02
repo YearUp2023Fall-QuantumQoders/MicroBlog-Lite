@@ -13,10 +13,11 @@ let options = {
 let apiLink = "http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts";
 
 let cardContainer = document.getElementById("displayPostsContainer");
-
+let logoutLink = document.getElementById("navLogout");
 window.onload = init();
 
 function init(){
+  logoutLink.onclick = logout;
   loadPosts();
 }
 
