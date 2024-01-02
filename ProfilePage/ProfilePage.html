@@ -42,7 +42,7 @@
     <main>
         <h1>Profile Page</h1>
 
-        <!-- Trigger Modal -->
+        <!-- Trigger Modal for Post  -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-bs-whatever="@getbootstrap">Create a Post</button>
 
@@ -71,6 +71,45 @@
             </div>
         </div>
         <!-- End of Modal -->
+
+        <div id="display-bio"></div>
+
+
+        <!-- Trigger Modal for Bio -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateBioModal"
+            data-bs-whatever="@getbootstrap">Update Bio</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="updateBioModal" tabindex="-1" aria-labelledby="updateBioModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="updateBioModalLabel">Update your Bio</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text-bio"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-input" class="col-form-label">Password:</label>
+                                <input type="text" class="form-control" id="password-input" placeholder="Enter your password">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="send-message-bio">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Modal -->
+
+
 
         <div class="mt-5" style="color: #333; background-color: #333; height: 2px; border: none;"></div>
 
