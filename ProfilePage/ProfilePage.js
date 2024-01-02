@@ -2,7 +2,7 @@
 
 const sendMessage = document.getElementById("send-message");
 const messageText = document.getElementById("message-text");
-const posts = document.getElementById("posts")
+const cardContainer = document.getElementById("posts")
 const loginData = JSON.parse(window.localStorage.getItem("login-data"));
 const displayBioOnPage = document.getElementById("display-bio");
 const passwordInput = document.getElementById("password-input");
@@ -17,12 +17,8 @@ window.onload = () =>{
     messageText.value = "";
 
     displayBio();
-
-let logoutLink = document.getElementById("navLogout");
-
-window.onload = () =>{
+    let logoutLink = document.getElementById("navLogout");
     logoutLink.onclick = logout;
-
     displayPosts();
     sendMessage.onclick = sendPost;
     sendBioMessage.onclick = updateBio;
@@ -51,23 +47,30 @@ const displayBio = () =>{
 // update the User's Bio
 const updateBio = () => {
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    console.log(loginData.username);
+    console.log(passwordInput.value, bioInput.value, userInfo.fullName)
+    let bodyObject = {
+        password: passwordInput.value, 
+        bio: bioInput.value,
+        fullName: userInfo.fullName
+    }
+    console.log(bodyObject);
     fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/${loginData.username}`, {
         method: "PUT",
         headers: {
             "Authorization": `Bearer ${loginData.token}`,    
+            "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                password: passwordInput.value, 
-                bio : bioInput.value,
-                fullName: userInfo.fullName
-            })
+            body: JSON.stringify(bodyObject)
         })
         .then(res => res.json())
         .then(data =>{
             console.log(data);
-            
+            window.location.reload();
         })
         .catch(err => console.log(err));
+
+
 }
 
 // send a post fetch to create a post
@@ -130,7 +133,31 @@ const addPostsToDiv = (Posts) =>{
 
 
 // format the layout of a single post
-const formatSinglePost = (post) => {
+const formatSinglePost = (userPost) => {
     // use same layout as Posts Page 
-    // console.log(post);
+    console.log(userPost);
+    let postUsername = userPost.username;
+    let postTimestamp = userPost.createdAt;
+    let postText = userPost.text;
+
+    let postDate = postTimestamp.substr(0, postTimestamp.indexOf('T'));
+    let postTime = postTimestamp.substring(postTimestamp.indexOf('T') + 1, postTimestamp.indexOf('.'));
+
+    //create a new card every time there's a new post
+    let card = document.createElement('div');
+    card.className = 'card';
+
+    //card body
+    let cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+    //add body content
+    cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
+        `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
+        `<p class="card-text">${postText}</p>`;
+
+    //Append card body to card
+    card.appendChild(cardBody);
+
+    //Append card to container
+    cardContainer.appendChild(card);
 };
