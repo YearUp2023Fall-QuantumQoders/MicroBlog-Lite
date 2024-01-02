@@ -11,8 +11,11 @@ const sendBioMessage = document.getElementById("send-message-bio");
 const fullNameInput = document.getElementById("fullName-input");
 const userName = document.getElementById("user-name");
 
+const loggedUser = document.getElementById("loggedUser");
+
 
 window.onload = () =>{
+    loggedUser.text = loginData.username;
     // remove the old values inside both Modals 
     passwordInput.value = "";
     bioInput.value = "";
