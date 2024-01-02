@@ -17,6 +17,12 @@ window.onload = () =>{
     messageText.value = "";
 
     displayBio();
+
+let logoutLink = document.getElementById("navLogout");
+
+window.onload = () =>{
+    logoutLink.onclick = logout;
+
     displayPosts();
     sendMessage.onclick = sendPost;
     sendBioMessage.onclick = updateBio;
