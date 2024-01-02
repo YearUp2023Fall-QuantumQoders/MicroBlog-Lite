@@ -22,3 +22,15 @@
   #third {
     padding-left: 2em;
   }
+
+  
+ h1{
+    font-size: 9.259vh;
+    font-family: 'Italiana',serif;
+    padding-top:5px;
+    font-style: italic;
+  }
+
+  .card-subtitle{
+    font-family: 'Italiana',serif;
+  }
