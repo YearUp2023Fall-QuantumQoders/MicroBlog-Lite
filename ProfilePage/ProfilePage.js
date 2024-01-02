@@ -8,9 +8,10 @@ const displayBioOnPage = document.getElementById("display-bio");
 const passwordInput = document.getElementById("password-input");
 const bioInput = document.getElementById("message-text-bio");
 const sendBioMessage = document.getElementById("send-message-bio");
-
+const loggedUser = document.getElementById("loggedUser");
 
 window.onload = () =>{
+    loggedUser.text = loginData.username;
     // remove the old values inside both Modals 
     passwordInput.value = "";
     bioInput.value = "";
