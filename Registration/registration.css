@@ -1,9 +1,26 @@
 body {
-    background-color: #E55934;
+    background-image: 
+  }
+h1, h2 {
+    font-family: ital;
+    color: #619B8A;
 }
-
 .container {
-    background-color:#D2D7DF;
+    background-color: #F3D3BD;
     padding: 5px 20px 15px 20px;
     border: none;
     border-radius: 3px; }
+
+.card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+    border: none;
+}
+
+#addUser {
+    border: none;
+    background-color: #D36135;
+}
