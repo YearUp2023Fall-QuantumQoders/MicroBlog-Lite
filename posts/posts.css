@@ -1,1 +1,73 @@
 /* Posts Page CSS */
+#displayPostsContainer 
+{
+color: #8e5412;
+border: 5px #48535d solid;
+border-radius: 5px;
+position: relative;
+top:10rem;
+}
+
+.card {
+    
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 5px 11px 4px rgba(0, 0, 0, 0.2);
+  }
+
+ .btn{
+    position: relative;
+    top:10rem;
+    left:60rem;
+    bottom:10px;
+    background-color:#48535d ;
+    color: #fff;
+
+  }
+
+  .sortDiv{
+    display: flex;
+  
+
+  }
+
+
+  body{
+    background-color: #3e4852;
+  }
+  h1{
+    font-family: 'Italiana', serif;
+    margin:30px;
+    font-size: 9.259vh;
+  }
+
+  .card-body{
+    display: flex;
+    flex-direction: column;
+  }
+  .card-subtitle{
+
+    align-self: flex-end;
+    order: 3;
+    }
+
+.card-body button{
+    order:4;
+   background-color: #48535d;
+   color:white;
+   border-radius: 10px;
+   margin-bottom: 4px;
+  
+}
+
+#heartIcon{
+    width:15px;
+
+}
+
+
+
