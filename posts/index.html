@@ -1,6 +1,7 @@
 <!-- POSTS page -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,32 +36,32 @@
         if (isLoggedIn() === false) window.location.replace("/landing/");
     </script>
 </head>
+
 <body>
- <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <header>
+        <nav class="navbar navbar-expand" style="background-color:#F3D3BD;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/landing/">
-                    <img src="#" alt="#" width="30" height="24" class="d-inline-block align-text-top">
-                    Nom Nom Nosh
+                <a class="navbar-brand" href="/posts/">
+                    <img src="images/Nom Nom Nosh outline logo .png" alt="Nom Nom Nosh Logo" width="125" height="75" class="d-inline-block rounded">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!--This unordered list is a placeholder for debug navigation-->
                         <li class="nav-item">
-                            <a class="nav-link" href="/Registration/index.html">Registration</a>
+                            <a class="nav-link px-4" href="/posts/">Posts</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Posts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ProfilePage/ProfilePage.html">Profile</a>
-                        </li>
+
+                        <li class="nav-item dropdown pe-5 me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" href="#" id="loggedUser"></a></li>
+                                <li><a class="dropdown-item" href="/ProfilePage/ProfilePage.html">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#" id="navLogout">Logout</a></li>
+                            </ul>
                     </ul>
-                    <span class="nav-item">
-                        <!--EXTRA Todo: This should change to be a link to the registration page if 
-                    not logged in, and if logged in, change to be User name with a clickable menu 
-                    that allows the user to navigate to profile and logout-->
-                        <a class="nav-link" id="navLogout" href="#">Logout</a>
+                    </li>
                     </span>
                 </div>
             </div>
@@ -83,4 +84,5 @@
     <!-- Page-specific code -->
     <script src="./posts.js"></script>
 </body>
+
 </html>

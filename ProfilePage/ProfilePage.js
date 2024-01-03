@@ -8,13 +8,19 @@ const displayBioOnPage = document.getElementById("display-bio");
 const passwordInput = document.getElementById("password-input");
 const bioInput = document.getElementById("message-text-bio");
 const sendBioMessage = document.getElementById("send-message-bio");
+const fullNameInput = document.getElementById("fullName-input");
+const userName = document.getElementById("user-name");
+
+const loggedUser = document.getElementById("loggedUser");
 
 
 window.onload = () =>{
+    loggedUser.text = loginData.username;
     // remove the old values inside both Modals 
     passwordInput.value = "";
     bioInput.value = "";
     messageText.value = "";
+    fullNameInput.value = "";
 
     displayBio();
     let logoutLink = document.getElementById("navLogout");
@@ -35,6 +41,7 @@ const displayBio = () =>{
         .then(res => res.json())
         .then(data =>{
             sessionStorage.setItem("userInfo", JSON.stringify(data));
+            userName.innerText = data.fullName;
             if(data.bio){
                 displayBioOnPage.innerText = data.bio;
             } else{
@@ -46,13 +53,11 @@ const displayBio = () =>{
 
 // update the User's Bio
 const updateBio = () => {
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-    console.log(loginData.username);
-    console.log(passwordInput.value, bioInput.value, userInfo.fullName)
+    
     let bodyObject = {
         password: passwordInput.value, 
         bio: bioInput.value,
-        fullName: userInfo.fullName
+        fullName: fullNameInput.value
     }
     console.log(bodyObject);
     fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/${loginData.username}`, {
@@ -66,6 +71,7 @@ const updateBio = () => {
         .then(res => res.json())
         .then(data =>{
             console.log(data);
+            userName.innerText = data.fullName;
             window.location.reload();
         })
         .catch(err => console.log(err));
@@ -135,7 +141,6 @@ const addPostsToDiv = (Posts) =>{
 // format the layout of a single post
 const formatSinglePost = (userPost) => {
     // use same layout as Posts Page 
-    console.log(userPost);
     let postUsername = userPost.username;
     let postTimestamp = userPost.createdAt;
     let postText = userPost.text;
@@ -143,21 +148,23 @@ const formatSinglePost = (userPost) => {
     let postDate = postTimestamp.substr(0, postTimestamp.indexOf('T'));
     let postTime = postTimestamp.substring(postTimestamp.indexOf('T') + 1, postTimestamp.indexOf('.'));
 
-    //create a new card every time there's a new post
+    // create a new card every time there's a new post
     let card = document.createElement('div');
-    card.className = 'card';
+    // Add Bootstrap's grid classes for responsiveness
+    card.className = 'card container m-3';
 
-    //card body
+    // card body
     let cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
-    //add body content
+    cardBody.className = 'card-body ';
+    // add body content
     cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
         `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
         `<p class="card-text">${postText}</p>`;
 
-    //Append card body to card
+    // Append card body to card
     card.appendChild(cardBody);
 
-    //Append card to container
+    // Append card to container
     cardContainer.appendChild(card);
 };
+

@@ -1,0 +1,22 @@
+.page{
+    background-color: #F9F9F9;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+
+.small-button{
+    @media  (max-width: 575px) {
+        width: 150px;
+    }
+}
+
+.css-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
