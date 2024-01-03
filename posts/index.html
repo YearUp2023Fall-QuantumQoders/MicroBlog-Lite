@@ -1,6 +1,7 @@
 <!-- POSTS page -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,58 +14,101 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 
+    <!-- Icon Stylesheet-->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <!-- Global CSS (CSS rules you want applied to all pages) -->
     <link rel="stylesheet" href="../global.css">
+
+    <!--Font Link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300&display=swap"
+        rel="stylesheet">
 
     <!-- Page-specific CSS -->
     <link rel="stylesheet" href="./posts.css">
 
-    <title>/POSTS</title>
+    <title>Posts</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload): -->
     <script src="../auth.js"></script>
     <script>
-        if (isLoggedIn() === false) window.location.replace("/");
+        if (isLoggedIn() === false) window.location.replace("/landing/");
     </script>
 </head>
+
 <body>
- <header>
-        <h1>POSTS PAGE</h1>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <header>
+        <nav class="navbar navbar-expand" style="background-color:#F3D3BD;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/landing/index.html">
-                    <img src="#" alt="#" width="30" height="24" class="d-inline-block align-text-top">
-                    Nom Nom Nosh
+                <a class="navbar-brand" href="/posts/">
+                    <img src="images/Nom Nom Nosh outline logo .png" alt="Nom Nom Nosh Logo" width="125" height="75"
+                        class="d-inline-block rounded">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!--This unordered list is a placeholder for debug navigation-->
                         <li class="nav-item">
-                            <a class="nav-link" href="/Registration/index.html">Registration</a>
+                            <a class="nav-link px-4" href="/posts/">Posts</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Posts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ProfilePage/ProfilePage.html">Profile</a>
-                        </li>
+
+                        <li class="nav-item dropdown pe-5 me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" href="#" id="loggedUser"></a></li>
+                                <li><a class="dropdown-item" href="/ProfilePage/ProfilePage.html">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#" id="navLogout">Logout</a></li>
+                            </ul>
                     </ul>
-                    <span class="nav-item">
-                        <!--EXTRA Todo: This should change to be a link to the registration page if 
-                    not logged in, and if logged in, change to be User name with a clickable menu 
-                    that allows the user to navigate to profile and logout-->
-                        <a class="nav-link" id="navLogout" href="#">Logout</a>
+                    </li>
                     </span>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main></main>
+    <main>
+        <h1 class="text-white">Food For Thought... </h1>
+        <div class="sortDiv d-flex flex-wrap justify-content-center">
+            <p class="sortBy">Sort By:</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="recentRadio" checked>
+                <label class="form-check-label" for="recentRadio">
+                  Recent
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="likedRadio">
+                <label class="form-check-label" for="likedRadio">
+                  Most Liked
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="nameRadio">
+                <label class="form-check-label" for="nameRadio">
+                  Name
+                </label>
+              </div>
+
+              <div class="input-group" id="namePrompt" style="display: none">
+                <span class="input-group-text" id="addon-wrapping">@</span>
+                <input type="text" id="nameTextInput" class="form-control" placeholder="Username" aria-label="Username">
+                <button class="btn" id="usernameSearchBtn">Search</button>
+              </div>
+
+              
+        </div>
+        <div class="container" id="displayPostsContainer">
+
+        </div>
+    </main>
 
     <footer></footer>
 
     <!-- Page-specific code -->
     <script src="./posts.js"></script>
 </body>
+
 </html>
