@@ -32,7 +32,7 @@ function init(){
   likedRadio.onchange = loadPosts;
   usernameSearchBtn.onclick = searchUserPosts;
   loadPosts();
-  
+}
 
 
 //if trying to search via name, show text box. Otherwise, hide text box.
@@ -142,16 +142,16 @@ function createCard(userPost) {
   }
 
   const login = JSON.parse(window.localStorage.getItem('login-data'))
- console.log(login )
+
   if(login.username == userPost.username){
 
-   cardBody.innerHTML += `<button id="deleteBtn_${userPost._id}" class="offset-11 col-.1"> Delete </button>`;
-   const deleteBtn =document.getElementById(`deleteBtn_${userPost._id}`)
-   deleteBtn.onclick= function (){
-     deleteAPost(userPost._id);
+  cardBody.innerHTML += `<button id="deleteBtn_${userPost._id}" class="offset-11 col-.1"> Delete </button>`;
+  const deleteBtn =document.getElementById(`deleteBtn_${userPost._id}`)
+  deleteBtn.onclick= function (){
+    deleteAPost(userPost._id);
     }
-     console.log(deleteBtn)
-   }
+    // console.log(deleteBtn)
+  }
   
   
 
