@@ -148,21 +148,23 @@ const formatSinglePost = (userPost) => {
     let postDate = postTimestamp.substr(0, postTimestamp.indexOf('T'));
     let postTime = postTimestamp.substring(postTimestamp.indexOf('T') + 1, postTimestamp.indexOf('.'));
 
-    //create a new card every time there's a new post
+    // create a new card every time there's a new post
     let card = document.createElement('div');
-    card.className = 'card container m-3 ';
+    // Add Bootstrap's grid classes for responsiveness
+    card.className = 'card container m-3';
 
-    //card body
+    // card body
     let cardBody = document.createElement('div');
     cardBody.className = 'card-body ';
-    //add body content
+    // add body content
     cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
         `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
         `<p class="card-text">${postText}</p>`;
 
-    //Append card body to card
+    // Append card body to card
     card.appendChild(cardBody);
 
-    //Append card to container
+    // Append card to container
     cardContainer.appendChild(card);
 };
+
