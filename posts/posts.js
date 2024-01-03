@@ -40,29 +40,8 @@ function loadPosts() {
 
 //Elements for Like and Delete Posts
 
-const deleteBtn= document.getElementById('deleteBtn')
 
-function addALike(postId){
-fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes${postId}`),{
 
-method: "POST",
-  body: JSON.stringify({
-    postId: postId
-    }),
-
-    headers: { "Content-type": "application/json;charset=UTF-8" },
-  }
-  .then(response => response.json())
-  
-  .then(json =>{
-    
-    
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-    // Handle the error appropriately
-  });
-  }
 
 
 
@@ -88,10 +67,10 @@ function createCard(userPost) {
   //add body content
   cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
     `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
-    `<p class="card-text">${postText}</p>` +  `Likes: ${userPost.likes.length}` + `<button id="likeBtn_${userPost._id}" class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>` 
+    `<p class="card-text">${postText}</p>` +  `<p id='displayLikes_${userPost._id}'> Likes: ${userPost.likes.length}</p>` + `<button id="likeBtn_${userPost._id}" class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>` 
     + `<button id="deleteBtn" class="offset-11 col-.1"> Delete </button>`;
 
-
+console.log(userPost.likes.length)
 
   //Append card body to card
   card.appendChild(cardBody);
@@ -100,12 +79,39 @@ function createCard(userPost) {
   cardContainer.appendChild(card);
 
   const likeBtn= document.getElementById(`likeBtn_${userPost._id}`)
+  const displayLikes= document.getElementById(`displayLikes_${userPost._id}`)
   likeBtn.onclick= function (){
-    addALike(userPost._id);
+    addALike(userPost._id, userPost,displayLikes);
   }
-
+ 
 }
 
+
+
+function addALike(postId,userPost,displayLikes) {
+  fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes`, {
+    method: "POST",
+    body: JSON.stringify({
+      postId: postId
+    }),
+    headers: {
+      "Content-type": "application/json;charset=UTF-8",
+      "Authorization": `Bearer ${loginData.token}`
+    }
+  })
+  .then(response => response.json())
+  .then(json => {
+    console.log(userPost.likes.length)
+    displayLikes.innerHTML=`Likes: ${userPost.likes.length + 1}`;
+   
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+    // Handle the error appropriately
+  });
+}
+
+    
 
 
 
