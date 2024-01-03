@@ -21,6 +21,9 @@ window.onload = init();
 function init(){
   logoutLink.onclick = logout;
   loadPosts();
+  
+  deleteBtn.onclick=deleteAPost;
+
 }
 
 function loadPosts() {
@@ -34,6 +37,36 @@ function loadPosts() {
     });
 
 }
+
+//Elements for Like and Delete Posts
+
+const deleteBtn= document.getElementById('deleteBtn')
+
+function addALike(postId){
+fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes${postId}`),{
+
+method: "POST",
+  body: JSON.stringify({
+    postId: postId
+    }),
+
+    headers: { "Content-type": "application/json;charset=UTF-8" },
+  }
+  .then(response => response.json())
+  
+  .then(json =>{
+    
+    
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+    // Handle the error appropriately
+  });
+  }
+
+
+
+
 
 
 function createCard(userPost) {
@@ -55,8 +88,8 @@ function createCard(userPost) {
   //add body content
   cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
     `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
-    `<p class="card-text">${postText}</p>` + `<button class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>` 
-    + `<button class="offset-11 col-.1"> <img id="closeIcon" src="images/cross.png"> Delete </button>`;
+    `<p class="card-text">${postText}</p>` +  `Likes: ${userPost.likes.length}` + `<button id="likeBtn_${userPost._id}" class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>` 
+    + `<button id="deleteBtn" class="offset-11 col-.1"> Delete </button>`;
 
 
 
@@ -65,7 +98,17 @@ function createCard(userPost) {
 
   //Append card to container
   cardContainer.appendChild(card);
+
+  const likeBtn= document.getElementById(`likeBtn_${userPost._id}`)
+  likeBtn.onclick= function (){
+    addALike(userPost._id);
+  }
+
 }
+
+
+
+
 
 function getLoginData() {
   console.log("getLoginData");
