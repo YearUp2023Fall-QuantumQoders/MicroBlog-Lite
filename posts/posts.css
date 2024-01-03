@@ -60,10 +60,18 @@ top:10rem;
    background-color: #48535d;
    color:white;
    border-radius: 10px;
-  
+   margin-bottom: 4px;
+
 }
 
 #heartIcon{
     width:15px;
+    
+}
+
+
+#closeIcon{
+    width:12px;
+    margin-left: 8px;
     
 }
