@@ -72,7 +72,7 @@ function createCard(userPost) {
     `<p class="card-text">${postText}</p>` +  `<p id='displayLikes_${userPost._id}'> Likes: ${userPost.likes.length}</p>` + `<button id="likeBtn_${userPost._id}" class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>` 
     + `<button id="deleteBtn" class="offset-11 col-.1"> Delete </button>`;
 
-console.log(userPost.likes.length)
+
 
   //Append card body to card
   card.appendChild(cardBody);
@@ -103,7 +103,7 @@ function addALike(postId,userPost,displayLikes) {
   })
   .then(response => response.json())
   .then(json => {
-    console.log(userPost.likes.length)
+   
     displayLikes.innerHTML=`Likes: ${userPost.likes.length + 1}`;
    
   })
