@@ -17,29 +17,84 @@ let apiLink = "http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts";
 let cardContainer = document.getElementById("displayPostsContainer");
 let logoutLink = document.getElementById("navLogout");
 let loggedUser = document.getElementById("loggedUser");
+let recentRadio = document.getElementById("recentRadio");
+let nameRadio = document.getElementById("nameRadio");
+let likedRadio = document.getElementById("likedRadio");
+let usernameSearchBtn = document.getElementById("usernameSearchBtn");
 window.onload = init();
 
 function init(){
   loggedUser.text = loginData.username;
   logoutLink.onclick = logout;
+
+  recentRadio.onchange = loadPosts;
+  nameRadio.onchange = loadPosts;
+  likedRadio.onchange = loadPosts;
+  usernameSearchBtn.onclick = searchUserPosts;
   loadPosts();
   
-  
 
+
+//if trying to search via name, show text box. Otherwise, hide text box.
+function namePromptVisibilityToggle(){
+  namePrompt = document.getElementById("namePrompt");
+
+  //RESET NAME FIELD WHEN CHANGING OPTIONS
+  let nameField = document.getElementById("nameTextInput");
+  nameField.value = "";
+
+  if(nameRadio.checked){
+    namePrompt.style = "display: visible;";
+  }
+  else if(!nameRadio.checked){
+    namePrompt.style = "display: none;";
+  }
 }
 
+//handles recent and most liked post sorts
 function loadPosts() {
-  fetch(apiLink, options)
+  //hide or show the username field
+  namePromptVisibilityToggle();
+  //reset post display
+  cardContainer.innerHTML = "";
+
+  if(recentRadio.checked){
+    fetch(apiLink, options)
     .then(response => response.json())
     .then(userPosts => {
       for(let x = 0; x < userPosts.length; x++){
         createCard(userPosts[x]);
       }
-      
     });
+  }
+  else if(likedRadio.checked){
+    fetch(apiLink, options)
+    .then(response => response.json())
+    .then(userPosts => {
+      userPosts.sort((a, b) => b.likes.length - a.likes.length);
 
+      for(let x = 0; x < userPosts.length; x++){
+          createCard(userPosts[x]);
+      }
+    });
+  }
 }
 
+//handles posts sorted by input username (using .filter and .includes)
+function searchUserPosts(){
+  cardContainer.innerHTML = "";
+  let nameTextInput = document.getElementById("nameTextInput").value.toLowerCase();
+
+  fetch(apiLink, options)
+    .then(response => response.json())
+    .then(userPosts => {
+      const filteredPosts = userPosts.filter((userPosts) => userPosts.username.toLowerCase().includes(nameTextInput));
+
+      for(let x = 0; x < filteredPosts.length; x++){
+        createCard(filteredPosts[x]);
+      }
+    });
+}
 //Elements for Like and Delete Posts
 
 
