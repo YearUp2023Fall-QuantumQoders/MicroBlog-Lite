@@ -24,7 +24,7 @@ function init(){
   logoutLink.onclick = logout;
   loadPosts();
   
-  deleteBtn.onclick=deleteAPost;
+  
 
 }
 
@@ -70,7 +70,7 @@ function createCard(userPost) {
   cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
     `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
     `<p class="card-text">${postText}</p>` +  `<p id='displayLikes_${userPost._id}'> Likes: ${userPost.likes.length}</p>` + `<button id="likeBtn_${userPost._id}" class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>` 
-    + `<button id="deleteBtn" class="offset-11 col-.1"> Delete </button>`;
+    
 
 
 
@@ -79,13 +79,27 @@ function createCard(userPost) {
 
   //Append card to container
   cardContainer.appendChild(card);
-
+// Like Btn Event Handler
   const likeBtn= document.getElementById(`likeBtn_${userPost._id}`)
   const displayLikes= document.getElementById(`displayLikes_${userPost._id}`)
   likeBtn.onclick= function (){
     addALike(userPost._id, userPost,displayLikes);
   }
- 
+
+  const login = JSON.parse(window.localStorage.getItem('login-data'))
+ console.log(login )
+  if(login.username == userPost.username){
+
+   cardBody.innerHTML += `<button id="deleteBtn_${userPost._id}" class="offset-11 col-.1"> Delete </button>`;
+   const deleteBtn =document.getElementById(`deleteBtn_${userPost._id}`)
+   deleteBtn.onclick= function (){
+     deleteAPost(userPost._id);
+    }
+     console.log(deleteBtn)
+   }
+  
+  
+
 }
 
 
@@ -113,16 +127,32 @@ function addALike(postId,userPost,displayLikes) {
   });
 }
 
-    
+function deleteAPost(postId){
+
+      fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json;charset=UTF-8",
+          "Authorization": `Bearer ${loginData.token}`
+        }
+        })
+        .then(response => response.json()) 
+        .then(json => {
+          window.location.reload();
+        })
+        .catch(err => {
+          console.log(err)
+        });
+    }
 
 
 
 
 function getLoginData() {
-  console.log("getLoginData");
+  //console.log("getLoginData");
   const loginJSON = window.localStorage.getItem("login-data");
-  console.log(loginJSON);
-  console.log(JSON.parse(loginJSON));
+  //console.log(loginJSON);
+  //console.log(JSON.parse(loginJSON));
 
   return JSON.parse(loginJSON) || {};
 }
