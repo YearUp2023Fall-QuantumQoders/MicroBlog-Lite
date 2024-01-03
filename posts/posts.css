@@ -22,8 +22,8 @@ top:10rem;
  .btn{
     position: relative;
     top:10rem;
-    left:60rem;
     bottom:10px;
+    margin: 10px;
     background-color:#48535d ;
     color: #fff;
 
