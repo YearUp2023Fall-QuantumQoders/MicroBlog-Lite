@@ -159,7 +159,7 @@ const formatSinglePost = (userPost) => {
     // add body content
     cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
         `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
-        `<p class="card-text">${postText}</p>`;
+        `<p class="card-text">${postText}</p>`  +  `<p id='displayLikes_${userPost._id}'> Likes: ${userPost.likes.length}</p>`;
 
     // Append card body to card
     card.appendChild(cardBody);
