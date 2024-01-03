@@ -16,9 +16,11 @@ let apiLink = "http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts";
 
 let cardContainer = document.getElementById("displayPostsContainer");
 let logoutLink = document.getElementById("navLogout");
+let loggedUser = document.getElementById("loggedUser");
 window.onload = init();
 
 function init(){
+  loggedUser.text = loginData.username;
   logoutLink.onclick = logout;
   loadPosts();
   
