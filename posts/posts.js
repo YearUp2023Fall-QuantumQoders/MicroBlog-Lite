@@ -43,6 +43,7 @@ function createCard(userPost) {
 
   let postDate = postTimestamp.substr(0, postTimestamp.indexOf('T'));
   let postTime = postTimestamp.substring(postTimestamp.indexOf('T') + 1, postTimestamp.indexOf('.'));
+ 
 
   //create a new card every time there's a new post
   let card = document.createElement('div');
@@ -54,7 +55,7 @@ function createCard(userPost) {
   //add body content
   cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
     `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
-    `<p class="card-text">${postText}</p>`;
+    `<p class="card-text">${postText}</p>` + `<button class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>`;
 
 
 
