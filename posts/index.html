@@ -70,36 +70,38 @@
     </header>
 
     <main>
-        <h1 class="text-white">Food For Thought... </h1>
-        <div class="sortDiv d-flex flex-wrap justify-content-center">
-            <p class="sortBy">Sort By:</p>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="recentRadio" checked>
-                <label class="form-check-label" for="recentRadio">
-                  Recent
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="likedRadio">
-                <label class="form-check-label" for="likedRadio">
-                  Most Liked
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="nameRadio">
-                <label class="form-check-label" for="nameRadio">
-                  Name
-                </label>
-              </div>
+        <div class="container topImageContainer">
+            <h1 class="text-white">Food For Thought... </h1>
+            <div class="sortDiv d-flex flex-wrap justify-content-center">
+                <p class="sortBy">Sort By:</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="recentRadio" checked>
+                    <label class="form-check-label" for="recentRadio">
+                        Recent
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="likedRadio">
+                    <label class="form-check-label" for="likedRadio">
+                        Most Liked
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="nameRadio">
+                    <label class="form-check-label" for="nameRadio">
+                        Name
+                    </label>
+                </div>
 
-              <div class="input-group" id="namePrompt" style="display: none">
-                <span class="input-group-text" id="addon-wrapping">@</span>
-                <input type="text" id="nameTextInput" class="form-control" placeholder="Username" aria-label="Username">
-                <button class="btn" id="usernameSearchBtn">Search</button>
-              </div>
-
-              
+                <div class="input-group" id="namePrompt" style="display: none">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                    <input type="text" id="nameTextInput" class="form-control" placeholder="Username"
+                        aria-label="Username">
+                    <button type="button" class="btn btn-primary" id="usernameSearchBtn">Search</button>
+                </div>
+            </div>
         </div>
+
         <div class="container" id="displayPostsContainer">
 
         </div>
