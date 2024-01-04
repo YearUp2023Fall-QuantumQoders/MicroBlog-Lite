@@ -1,85 +1,101 @@
 /* Posts Page CSS */
-#displayPostsContainer 
-{
-color: #8e5412;
-border: 5px #48535d solid;
-border-radius: 5px;
-position: relative;
-top:10rem;
+.topImageContainer{
+  background-image: url("images/Nom\ NomNOSHH.png");
+}
+#displayPostsContainer {
+  color: #9e692c;
+  border: 5px #48535d solid;
+  border-radius: 5px;
+  position: relative;
+  top: 3rem;
 }
 
 .card {
-    
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0px 5px 11px 4px rgba(0, 0, 0, 0.2);
-  }
 
- .form-check-input, .sortBy, .input-group{
-    position: relative;
-    top:10rem;
-    margin-left: 15px;
-    margin-right: 5px;
-    background-color:#48535d ;
-    color: #fff;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 5px 11px 4px rgba(0, 0, 0, 0.2);
+}
 
-  }
+.form-check-input,
+.sortBy,
+.input-group {
+  position: relative;
+  top: 3rem;
+  margin-left: 15px;
+  margin-right: 5px;
+  color: #fff;
 
-  .form-check-label{
-    position:relative;
-    top: 10rem;
-    margin-right: 20px;
-    background-color:#48535d ;
-    color: #fff;
-  }
+}
 
-  .input-group{
-    width: fit-content;
-    height:fit-content;
-  }
-  .sortDiv{
-    display: flex;
-    overflow-wrap: normal;
+.form-check-label {
+  position: relative;
+  top: 3rem;
+  margin-right: 20px;
+  color: #fff;
+}
 
-  }
+.input-group {
+  width: fit-content;
+  height: fit-content;
+}
+
+.sortDiv {
+  display: flex;
+  overflow-wrap: normal;
+}
 
 
-  body{
-    background-color: #3e4852;
-  }
-  h1{
-    font-family: 'Italiana', serif;
-    margin:30px;
-    font-size: 9.259vh;
-  }
+body {
+  background-color: #3e4852;
+}
 
-  .card-body{
-    display: flex;
-    flex-direction: column;
-  }
-  .card-subtitle{
+label, button, h5{
+  font-family: 'Italiana';
+  font-weight:bold;
+}
 
-    align-self: flex-end;
-    order: 3;
-    }
+h6{
+  font-family: 'Italiana', serif;
+  font-size:larger;
+  font-weight:bolder;
+}
+h1 {
+  font-family: 'Italiana', serif;
+  font-weight:bolder;
+  text-align: center;
+  font-size: 9.259vh;
+}
 
-.card-body button{
-    order:4;
-   background-color: #48535d;
-   color:white;
-   border-radius: 10px;
-   margin-bottom: 4px;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #F3D3BD;
+  box-shadow: 0px 5px 11px 4px rgba(0, 0, 0, 0.2);
+  margin: 5px;
   
 }
 
-#heartIcon{
-    width:15px;
+.card-subtitle {
 
+  align-self: flex-end;
+  order: 3;
 }
 
+.card-body button {
+  order: 4;
+  background-color: #48535d;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  max-width: 15%;
+  width: fit-content;
+}
 
-
+#heartIcon {
+  width: 15px;
+}

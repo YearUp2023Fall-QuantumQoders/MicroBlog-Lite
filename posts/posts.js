@@ -120,11 +120,11 @@ function createCard(userPost) {
 
   //card body
   let cardBody = document.createElement('div');
-  cardBody.className = 'card-body';
+  cardBody.className = 'card-body rounded';
   //add body content
   cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
     `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
-    `<p class="card-text">${postText}</p>` +  `<p id='displayLikes_${userPost._id}'> Likes: ${userPost.likes.length}</p>` + `<button id="likeBtn_${userPost._id}" class="offset-11 col-.1"> <img id="heartIcon" src="images/heart.png"> Like </button>` 
+    `<p class="card-text">${postText}</p>` +  `<p id='displayLikes_${userPost._id}'> Likes: ${userPost.likes.length}</p>` + `<button id="likeBtn_${userPost._id}" class="offset-11 col-.1"> <img class="rounded" id="heartIcon" src="images/heart.jpg"> Like </button>` 
     
 
 

@@ -155,7 +155,7 @@ const formatSinglePost = (userPost) => {
 
     // card body
     let cardBody = document.createElement('div');
-    cardBody.className = 'card-body ';
+    cardBody.className = 'card-body rounded';
     // add body content
     cardBody.innerHTML = `<h5 class="card-title">${postUsername}</h5>` +
         `<h6 class="card-subtitle mb-2 text-body-secondary">${postDate}, ${postTime}</h6>` +
