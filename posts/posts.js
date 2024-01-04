@@ -138,12 +138,10 @@ function createCard(userPost) {
   const likeBtn= document.getElementById(`likeBtn_${userPost._id}`)
   const displayLikes= document.getElementById(`displayLikes_${userPost._id}`)
 
-
+// search for user inside likes array 
   for(let user of userPost.likes){
     if(user.username == loginData.username){
-      console.log(userPost, )
-      likeBtn.innerText = "liked"
-
+      likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.png"></img> Liked`
       likeBtn.onclick= function (){
         userLiked(user, userPost, displayLikes, likeBtn);
       }
@@ -151,14 +149,12 @@ function createCard(userPost) {
     }
   }
 
-
+// if user didn't like the post
   if(likeBtn.onclick == null){
     const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
-    console.log(likeBtn2);
     likeBtn2.onclick= function (){
       addALike(userPost._id, userPost,displayLikes, likeBtn2);
     }
-
   }
 
 
@@ -188,9 +184,8 @@ function userLiked(user, userPost, displayLikes, likeBtn){
     })
     .then(response => response.json()) 
     .then(json => {
-      // console.log(json)
       displayLikes.innerHTML=`Likes: ${userPost.likes.length - 1}`;
-      likeBtn.innerText = "like"
+      likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.jpg"></img> Like`
       likeBtn.onclick= function (){
         addALike(userPost._id, userPost,displayLikes);
       }
@@ -215,14 +210,12 @@ function addALike(postId,userPost,displayLikes, likeBtn) {
   })
   .then(response => response.json())
   .then(json => {
-    // console.log(json)
     const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
     displayLikes.innerHTML=`Likes: ${userPost.likes.length }`;
-    likeBtn2.textContent = "liked";
+    likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.jpg"></img> Liked`
+
     for(let user of userPost.likes){
       if(user.username == loginData.username){
-        console.log(userPost, )
-  
         likeBtn2.onclick= function (){
           userLiked(user, userPost, displayLikes, likeBtn2);
         }
