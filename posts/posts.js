@@ -128,7 +128,7 @@ function createCard(userPost) {
     
 
 
-
+  // console.log(userPost.likes)
   //Append card body to card
   card.appendChild(cardBody);
 
@@ -137,9 +137,28 @@ function createCard(userPost) {
 // Like Btn Event Handler
   const likeBtn= document.getElementById(`likeBtn_${userPost._id}`)
   const displayLikes= document.getElementById(`displayLikes_${userPost._id}`)
-  likeBtn.onclick= function (){
-    addALike(userPost._id, userPost,displayLikes);
+
+
+  for(let user of userPost.likes){
+    if(user.username == loginData.username){
+      console.log(userPost, )
+      likeBtn.innerText = "liked"
+
+      likeBtn.onclick= function (){
+        userLiked(user, userPost, displayLikes, likeBtn);
+      }
+      break
+    }
   }
+
+
+  if(likeBtn.onclick == null){
+    likeBtn.onclick= function (){
+      addALike(userPost._id, userPost,displayLikes, likeBtn);
+    }
+
+  }
+
 
   const login = JSON.parse(window.localStorage.getItem('login-data'))
 
@@ -157,9 +176,32 @@ function createCard(userPost) {
 
 }
 
+function userLiked(user, userPost, displayLikes, likeBtn){
+  // console.log(user)
+  fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes/${user._id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json;charset=UTF-8",
+      "Authorization": `Bearer ${loginData.token}`
+    }
+    })
+    .then(response => response.json()) 
+    .then(json => {
+      console.log(json)
+      displayLikes.innerHTML=`Likes: ${userPost.likes.length - 1}`;
+      likeBtn.innerText = "like"
+      likeBtn.onclick= function (){
+        addALike(userPost._id, userPost,displayLikes);
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    });
+}
 
 
-function addALike(postId,userPost,displayLikes) {
+
+function addALike(postId,userPost,displayLikes, likeBtn) {
   fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes`, {
     method: "POST",
     body: JSON.stringify({
@@ -172,9 +214,14 @@ function addALike(postId,userPost,displayLikes) {
   })
   .then(response => response.json())
   .then(json => {
-   
+  
     displayLikes.innerHTML=`Likes: ${userPost.likes.length + 1}`;
-   
+    likeBtn.innerText = "liked"
+
+    likeBtn.onclick= function (){
+      userLiked(user, userPost, displayLikes);
+    }
+  
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
