@@ -128,7 +128,7 @@ function createCard(userPost) {
     
 
 
-
+  // console.log(userPost.likes)
   //Append card body to card
   card.appendChild(cardBody);
 
@@ -137,9 +137,26 @@ function createCard(userPost) {
 // Like Btn Event Handler
   const likeBtn= document.getElementById(`likeBtn_${userPost._id}`)
   const displayLikes= document.getElementById(`displayLikes_${userPost._id}`)
-  likeBtn.onclick= function (){
-    addALike(userPost._id, userPost,displayLikes);
+
+// search for user inside likes array 
+  for(let user of userPost.likes){
+    if(user.username == loginData.username){
+      likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.png"></img> Liked`
+      likeBtn.onclick= function (){
+        userLiked(user, userPost, displayLikes, likeBtn);
+      }
+      break
+    }
   }
+
+// if user didn't like the post
+  if(likeBtn.onclick == null){
+    const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
+    likeBtn2.onclick= function (){
+      addALike(userPost._id, userPost,displayLikes, likeBtn2);
+    }
+  }
+
 
   const login = JSON.parse(window.localStorage.getItem('login-data'))
 
@@ -157,9 +174,30 @@ function createCard(userPost) {
 
 }
 
+function userLiked(user, userPost, displayLikes, likeBtn){
+  fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes/${user._id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json;charset=UTF-8",
+      "Authorization": `Bearer ${loginData.token}`
+    }
+    })
+    .then(response => response.json()) 
+    .then(json => {
+      displayLikes.innerHTML=`Likes: ${userPost.likes.length - 1}`;
+      likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.jpg"></img> Like`
+      likeBtn.onclick= function (){
+        addALike(userPost._id, userPost,displayLikes);
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    });
+}
 
 
-function addALike(postId,userPost,displayLikes) {
+
+function addALike(postId,userPost,displayLikes, likeBtn) {
   fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes`, {
     method: "POST",
     body: JSON.stringify({
@@ -172,9 +210,19 @@ function addALike(postId,userPost,displayLikes) {
   })
   .then(response => response.json())
   .then(json => {
-   
-    displayLikes.innerHTML=`Likes: ${userPost.likes.length + 1}`;
-   
+    const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
+    displayLikes.innerHTML=`Likes: ${userPost.likes.length }`;
+    likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.jpg"></img> Liked`
+
+    for(let user of userPost.likes){
+      if(user.username == loginData.username){
+        likeBtn2.onclick= function (){
+          userLiked(user, userPost, displayLikes, likeBtn2);
+        }
+        break
+      }
+    }
+  
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
