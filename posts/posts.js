@@ -37,7 +37,7 @@ function init(){
 
 //if trying to search via name, show text box. Otherwise, hide text box.
 function namePromptVisibilityToggle(){
-  namePrompt = document.getElementById("namePrompt");
+  let namePrompt = document.getElementById("namePrompt");
 
   //RESET NAME FIELD WHEN CHANGING OPTIONS
   let nameField = document.getElementById("nameTextInput");
@@ -150,6 +150,8 @@ function createCard(userPost) {
   }
 
 // if user didn't like the post
+
+
   if(likeBtn.onclick == null){
     likeBtn.onclick= function (){
       addALike(userPost._id, userPost,displayLikes, likeBtn);
@@ -185,9 +187,11 @@ function userLiked(user, userPost, displayLikes, likeBtn){
     .then(json => {
       displayLikes.innerHTML=`Likes: ${userPost.likes.length - 1}`;
       likeBtn.innerHTML =`<img class="rounded" id="heartIcon" src="images/heart.jpg"> Like`
-      likeBtn.onclick= function (){
-        addALike(userPost._id, userPost,displayLikes, likeBtn);
-      }
+      location.reload();
+    //   likeBtn.onclick= function (){
+    //     addALike(userPost._id, userPost,displayLikes, likeBtn);
+    //   }
+    // })
     })
     .catch(err => {
       console.log(err)
@@ -211,16 +215,16 @@ function addALike(postId,userPost,displayLikes, likeBtn) {
   .then(json => {
     displayLikes.innerHTML=`Likes: ${userPost.likes.length }`;
     likeBtn.innerHTML =`<img class="rounded" id="heartIcon" src="images/heart.jpg"> Liked`
-
-    for(let user of userPost.likes){
-      if(user.username == loginData.username){
-        likeBtn.onclick= function (){
-          userLiked(user, userPost, displayLikes, likeBtn);
-        }
-        break
-      }
-    }
+    location.reload();
+    // for(let user of userPost.likes){
+    //   if(user.username == loginData.username){
+    //     likeBtn.onclick= function (){
+    //       userLiked(user, userPost, displayLikes, likeBtn);
+    //     }
+    //     break;
+    //   }
   
+    // }
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
