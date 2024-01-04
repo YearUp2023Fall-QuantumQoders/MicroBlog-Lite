@@ -153,8 +153,10 @@ function createCard(userPost) {
 
 
   if(likeBtn.onclick == null){
-    likeBtn.onclick= function (){
-      addALike(userPost._id, userPost,displayLikes, likeBtn);
+    const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
+    console.log(likeBtn2);
+    likeBtn2.onclick= function (){
+      addALike(userPost._id, userPost,displayLikes, likeBtn2);
     }
 
   }
@@ -177,7 +179,6 @@ function createCard(userPost) {
 }
 
 function userLiked(user, userPost, displayLikes, likeBtn){
-  // console.log(user)
   fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes/${user._id}`, {
     method: "DELETE",
     headers: {
@@ -187,7 +188,7 @@ function userLiked(user, userPost, displayLikes, likeBtn){
     })
     .then(response => response.json()) 
     .then(json => {
-      console.log(json)
+      // console.log(json)
       displayLikes.innerHTML=`Likes: ${userPost.likes.length - 1}`;
       likeBtn.innerText = "like"
       likeBtn.onclick= function (){
@@ -214,12 +215,19 @@ function addALike(postId,userPost,displayLikes, likeBtn) {
   })
   .then(response => response.json())
   .then(json => {
+    // console.log(json)
+    const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
+    displayLikes.innerHTML=`Likes: ${userPost.likes.length }`;
+    likeBtn2.textContent = "liked";
+    for(let user of userPost.likes){
+      if(user.username == loginData.username){
+        console.log(userPost, )
   
-    displayLikes.innerHTML=`Likes: ${userPost.likes.length + 1}`;
-    likeBtn.innerText = "liked"
-
-    likeBtn.onclick= function (){
-      userLiked(user, userPost, displayLikes);
+        likeBtn2.onclick= function (){
+          userLiked(user, userPost, displayLikes, likeBtn2);
+        }
+        break
+      }
     }
   
   })
