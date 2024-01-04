@@ -70,7 +70,7 @@ const updateBio = () => {
         })
         .then(res => res.json())
         .then(data =>{
-            console.log(data);
+            // console.log(data);
             userName.innerText = data.fullName;
             window.location.reload();
         })
