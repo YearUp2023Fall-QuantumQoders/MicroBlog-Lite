@@ -141,7 +141,7 @@ function createCard(userPost) {
 // search for user inside likes array 
   for(let user of userPost.likes){
     if(user.username == loginData.username){
-      likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.png"></img> Liked`
+      likeBtn.innerHTML =`<img class="rounded" id="heartIcon" src="images/heart.jpg"> Liked`
       likeBtn.onclick= function (){
         userLiked(user, userPost, displayLikes, likeBtn);
       }
@@ -151,9 +151,8 @@ function createCard(userPost) {
 
 // if user didn't like the post
   if(likeBtn.onclick == null){
-    const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
-    likeBtn2.onclick= function (){
-      addALike(userPost._id, userPost,displayLikes, likeBtn2);
+    likeBtn.onclick= function (){
+      addALike(userPost._id, userPost,displayLikes, likeBtn);
     }
   }
 
@@ -185,9 +184,9 @@ function userLiked(user, userPost, displayLikes, likeBtn){
     .then(response => response.json()) 
     .then(json => {
       displayLikes.innerHTML=`Likes: ${userPost.likes.length - 1}`;
-      likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.jpg"></img> Like`
+      likeBtn.innerHTML =`<img class="rounded" id="heartIcon" src="images/heart.jpg"> Like`
       likeBtn.onclick= function (){
-        addALike(userPost._id, userPost,displayLikes);
+        addALike(userPost._id, userPost,displayLikes, likeBtn);
       }
     })
     .catch(err => {
@@ -210,14 +209,13 @@ function addALike(postId,userPost,displayLikes, likeBtn) {
   })
   .then(response => response.json())
   .then(json => {
-    const likeBtn2= document.getElementById(`likeBtn_${userPost._id}`)
     displayLikes.innerHTML=`Likes: ${userPost.likes.length }`;
-    likeBtn.innerHTML =`<img id="heartIcon" src="images/heart.jpg"></img> Liked`
+    likeBtn.innerHTML =`<img class="rounded" id="heartIcon" src="images/heart.jpg"> Liked`
 
     for(let user of userPost.likes){
       if(user.username == loginData.username){
-        likeBtn2.onclick= function (){
-          userLiked(user, userPost, displayLikes, likeBtn2);
+        likeBtn.onclick= function (){
+          userLiked(user, userPost, displayLikes, likeBtn);
         }
         break
       }
