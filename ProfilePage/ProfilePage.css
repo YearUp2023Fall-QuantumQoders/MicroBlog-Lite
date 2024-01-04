@@ -1,10 +1,16 @@
+
+
 .page {
+    
     background-color: #48535D;
     background-size: cover;
     width: 100%;
     min-height: 100vh;
     top: 0;
     left: 0;
+    color: white;
+    font-family: 'Italiana', serif;
+    
 }
 
 
@@ -51,8 +57,8 @@
 
 
 h1 {
-    font-family: 'Italiana', serif;
-    margin: 30px;
+    
+    /* margin: 30px; */
     font-size: 9.259vh;
 }
 
@@ -74,4 +80,9 @@ h1 {
     border-radius: 10px;
     margin-bottom: 4px;
 
+}
+
+.bio-section{
+    background-image: url("images/Nom\ NomNOSHH.png");
+    background-size: cover;
 }
