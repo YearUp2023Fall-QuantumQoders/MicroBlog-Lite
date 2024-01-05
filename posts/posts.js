@@ -188,10 +188,6 @@ function userLiked(user, userPost, displayLikes, likeBtn){
       displayLikes.innerHTML=`Likes: ${userPost.likes.length - 1}`;
       likeBtn.innerHTML =`<img class="rounded" id="heartIcon" src="images/heart.jpg"> Like`
       location.reload();
-    //   likeBtn.onclick= function (){
-    //     addALike(userPost._id, userPost,displayLikes, likeBtn);
-    //   }
-    // })
     })
     .catch(err => {
       console.log(err)
@@ -216,15 +212,6 @@ function addALike(postId,userPost,displayLikes, likeBtn) {
     displayLikes.innerHTML=`Likes: ${userPost.likes.length }`;
     likeBtn.innerHTML =`<img class="rounded" id="heartIcon" src="images/heart.jpg"> Liked`
     location.reload();
-    // for(let user of userPost.likes){
-    //   if(user.username == loginData.username){
-    //     likeBtn.onclick= function (){
-    //       userLiked(user, userPost, displayLikes, likeBtn);
-    //     }
-    //     break;
-    //   }
-  
-    // }
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
