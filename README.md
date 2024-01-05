@@ -45,7 +45,7 @@ Technologies Used
 - CSS:  Stylesheets for designing and layout.
 - Bootstrap:  Front-end framework for responsive design.
 - JavaScript:  Programming language used for interactivity.
-- jQuery:  JavaScript library simplifying DOM manipulation.
+
 
 How to Use
 
